@@ -1,0 +1,27 @@
+---
+- name: Installer apache2 et mysqlserver
+  hosts: all
+
+  tasks:
+    - name: Install apache2 mysql-server on Ubuntu
+      ansible.builtin.apt:
+        update_cache: true
+        name: "{{ item }}"
+        state: present
+      loop:
+        - apache2
+        - mysql-server
+      when: "inventory_hostname in groups['apache']"
+
+    - name: Install git nginx and cowsay 
+  
+      ansible.builtin.apt:
+        update_cache: true
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - nginx
+        - cowsay
+      when: "inventory_hostname in groups['node3']"
+      
