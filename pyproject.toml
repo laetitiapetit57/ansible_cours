@@ -1,0 +1,19 @@
+[project]
+name = "ansible-cours"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "laetitia.petit57", email = "laetitia.petit57@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "ansible>=14.6.0",
+]
+
+[project.scripts]
+ansible-cours = "ansible_cours:main"
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14.0"]
+build-backend = "uv_build"
