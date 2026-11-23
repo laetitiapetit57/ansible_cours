@@ -24,4 +24,15 @@
         - nginx
         - cowsay
       when: "inventory_hostname in groups['node3']"
+<<<<<<< HEAD
       
+=======
+
+    - name : Install ufw on Ubuntu machine
+
+      ansible.builtin.apt:
+        update_cache: true
+        name: ufw
+        state: present
+      when: ansible_facts['distribution'] == 'Ubuntu'
+>>>>>>> 7ab77a9 (tp3)
