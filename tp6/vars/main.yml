@@ -1,0 +1,9 @@
+mysql_root_password: super-secure-password
+mysql_databases:
+  - name: wordpress_db
+
+mysql_users:
+  - name: ambient
+    host: "%"
+    password: similarly-secure-password
+    priv: "wordpress_db.*:ALL"
