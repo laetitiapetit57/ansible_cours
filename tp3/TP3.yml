@@ -63,4 +63,17 @@
     - name: Quel jour sommes nous? 
       debug: 
         msg: "Nous sommes le  {{ ansible_date_time.day }}" 
+
+    - name: Inscrire le message en fonction du jour et de l'heure
+      ansible.builtin.lineinfile:
+        path: /etc/jour
+        create: true
+        line: >-
+          {{ 'pair' if ansible_date_time.day | int % 2 == 0 else 'impair' }}
+          et
+          {{ 'plus tard que midi' if ansible_date_time.hour | int >= 12 else 'avant midi' }}
+        
+    
+    - 
+
     
