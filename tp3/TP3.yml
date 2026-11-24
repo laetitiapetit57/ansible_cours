@@ -71,7 +71,7 @@
         line: >-
           {{ 'pair' if ansible_date_time.day | int % 2 == 0 else 'impair' }}
           et
-          {{ 'plus tard que midi' if ansible_date_time.hour | int >= 12 else 'avant midi' }}
+          {{ 'plus tard que midi' if ansible_facts["fact_name"]ansible_date_time.hour | int >= 12 else 'avant midi' }}
         
     
     - 
