@@ -55,3 +55,12 @@
         name: nginx
         state: started
       when: "'nginx' in ansible_facts.packages"
+
+    - name: Quelle est heure est-il? 
+      debug: 
+        msg: "il est {{ ansible_date_time.hour }}" 
+
+    - name: Quel jour sommes nous? 
+      debug: 
+        msg: "Nous sommes le  {{ ansible_date_time.day }}" 
+    
