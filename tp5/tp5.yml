@@ -1,0 +1,29 @@
+---
+- name: Installer et configurer docker
+  hosts: all
+
+  tasks: 
+    - name: Import tp3
+      ansible.builtin.import_playbook: tp3.yml
+
+    - name: Import tp4
+      ansible.builtin.import_playbook: tp4.yml
+
+    - name: Write date time in /etc/last_changed
+      ansible.builtin.lineinfile:
+      path: /etc/last_changed
+      line: "{{ ansible_facts['date_time']['date'] }} {{ ansible_facts['date_time']['time'] }}"
+      mode: "0644"
+      create: true
+      tags: datetime
+
+  
+
+
+
+
+
+  
+
+
+
