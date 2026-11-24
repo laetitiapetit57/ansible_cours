@@ -1,8 +1,8 @@
 ---
-- name: Installer et configurer docker
+- name: TP 5
   hosts: all
 
-  tasks: 
+  tasks:
     - name: Import tp3
       ansible.builtin.import_playbook: tp3.yml
 
@@ -16,14 +16,3 @@
       mode: "0644"
       create: true
       tags: datetime
-
-  
-
-
-
-
-
-  
-
-
-

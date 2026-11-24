@@ -13,8 +13,8 @@
         - mysql-server
       when: "inventory_hostname in groups['apache']"
 
-    - name: Install git nginx and cowsay 
-  
+    - name: Install git nginx and cowsay
+
       ansible.builtin.apt:
         update_cache: true
         name: "{{ item }}"
@@ -25,7 +25,7 @@
         - cowsay
       when: "inventory_hostname in groups['node3']"
 
-    - name : Install ufw on Ubuntu machine
+    - name: Install ufw on Ubuntu machine
 
       ansible.builtin.apt:
         update_cache: true
@@ -41,7 +41,7 @@
       ansible.builtin.template:
         src: templates/index.j2
         dest: /var/www/html/index.html
-        mode: '0644'
+        mode: "0644"
       when: "'apache2' in ansible_facts.packages or 'nginx' in ansible_facts.packages"
 
     - name: Start apache2
@@ -56,13 +56,13 @@
         state: started
       when: "'nginx' in ansible_facts.packages"
 
-    - name: Quelle est heure est-il? 
-      debug: 
-        msg: "il est {{ ansible_date_time.hour }}" 
+    - name: Quelle est heure est-il?
+      ansible.builtin.debug:
+        msg: "il est {{ ansible_date_time.hour }}"
 
-    - name: Quel jour sommes nous? 
-      debug: 
-        msg: "Nous sommes le  {{ ansible_date_time.day }}" 
+    - name: Quel jour sommes nous?
+      ansible.builtin.debug:
+        msg: "Nous sommes le  {{ ansible_date_time.day }}"
 
     - name: Inscrire le message en fonction du jour et de l'heure
       ansible.builtin.lineinfile:
@@ -72,8 +72,6 @@
           {{ 'pair' if ansible_date_time.day | int % 2 == 0 else 'impair' }}
           et
           {{ 'plus tard que midi' if ansible_facts["fact_name"]ansible_date_time.hour | int >= 12 else 'avant midi' }}
-        
-    
-    - 
 
-    
+
+    -

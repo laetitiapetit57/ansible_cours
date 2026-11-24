@@ -31,14 +31,10 @@
       ansible.builtin.copy:
         src: files/index.html
         dest: /var/www/html/index.html
-        mode: '0644'
+        mode: "0644"
       when: "'apache2' in ansible_facts.packages"
-    
+
     - name: Demarrer Apache2
       ansible.builtin.service:
         name: apache2
         state: started
-
-
-
-    

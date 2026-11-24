@@ -1,10 +1,10 @@
+---
 # Playbook pour configurer un serveur web
 - name: Installation de Apache2
   hosts: node2
 
   tasks:
     - name: Installation de Apache2
-      apt:
-        update_cache: yes
+      ansible.builtin.apt:
+        update_cache: true
         name: apache2
-    
