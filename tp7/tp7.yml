@@ -1,0 +1,29 @@
+---
+- name: La météo
+  hosts: 10.0.0.74
+  gather_facts: false
+  vars: 
+
+  tasks:
+
+    - name: Telechargement du fichier csv
+      ansible.builtin.get_url:
+        url: https://raw.githubusercontent.com/MrMegaNova/advanced_ansible_course_nov_2026/refs/heads/main/tp7/temperature.csv
+        dest: /home/ambient-user/user.csv
+        mode: '0644'
+
+    - name: Lecture du csv
+      community.general.read_csv:
+        path: /home/ambient-user/user.csv
+        fieldnames: time,temperature
+        delimiter: ','
+      register: temperature_csv
+
+    - name: Liste unique
+      ansible.builtin.set_fact:
+        temperatures_filtree: "{{ temperature_csv.list | unique }}"
+  
+    - name: Affichage lignes uniques
+      ansible.builtin.debug:
+        msg: "{{ temperature_csv.list }}"
+
