@@ -1,12 +1,12 @@
-mysql_root_password: super-secure-password
 mysql_databases:
   - name: wordpress_db
+    mysql_root_password: "{{ root_password }}"
 
 mysql_users:
   - name: ambient
     host: "%"
-    password: similarly-secure-password
     priv: "wordpress_db.*:ALL"
+    password: "{{ user_password }}"
 
 php_enable_php_fpm: true
 apache_vhosts:

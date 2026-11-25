@@ -2,7 +2,9 @@
 # Playbook pour configurer un serveur web
 - name: Installation de wordpress
   hosts: bdd
-  vars_files: vars/main.yml
+  vars_files: 
+    - vars/main.yml
+    - vaults/db_secret.yml
 
   tasks:
       
@@ -10,5 +12,5 @@
       ansible.builtin.include_role: 
         name: geerlingguy.mysql
     
-    
+
 
